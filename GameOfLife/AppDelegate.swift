@@ -11,14 +11,24 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    @IBOutlet var showMenu: NSMenuItem!
+    
     let storyboard = NSStoryboard(name: "Main", bundle: nil)
     var gameSideWindowController = NSWindowController()
+//    var gameWindowController = NSWindowController()
+    var games = [String:NSWindowController]()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         if let gameSideWindowController = storyboard.instantiateController(withIdentifier: "GameSideController") as? NSWindowController {
             self.gameSideWindowController = gameSideWindowController
             self.gameSideWindowController.showWindow(nil)
+        }
+        
+        if let win = storyboard.instantiateController(withIdentifier: "GameController") as? NSWindowController {
+            games["Game 0"] = win
+            win.windowTitle(forDocumentDisplayName: "Game 0")
+            win.showWindow(nil)
         }
     }
     
@@ -31,7 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func showGameWindow(_ sender: AnyObject) {
-        if let win = NSApplication.shared.mainWindow?.windowController {
+        if let win = games["Game 0"] {
             win.showWindow(sender)
         }
     }
