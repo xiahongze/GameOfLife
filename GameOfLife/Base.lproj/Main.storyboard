@@ -337,6 +337,25 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Show" id="hDw-Zo-2LT">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Show" id="Qok-sf-fFc">
+                                    <items>
+                                        <menuItem title="Game Window" id="sPy-cw-OIU">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="showGameWindow:" target="Ady-hI-5gd" id="y3X-aW-vDM"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Side Control" id="rPs-fh-tBt">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="showSideControllWindow:" target="Ady-hI-5gd" id="VLr-1U-sA4"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Format" id="jxT-CU-nIS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Format" id="GEO-Iw-cKr">
@@ -732,7 +751,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="144" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" id="IW2-NG-3Fo">
+                            <button verticalHuggingPriority="750" id="IW2-NG-3Fo">
                                 <rect key="frame" x="8" y="204" width="122" height="32"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <buttonCell key="cell" type="push" title="New Game" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="n0t-ep-BnG">
@@ -745,7 +764,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="rIo-U7-tsp"/>
                             </slider>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" id="lN0-xX-fPX">
+                            <button verticalHuggingPriority="750" id="lN0-xX-fPX">
                                 <rect key="frame" x="8" y="146" width="122" height="32"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="75A-CM-i8z">

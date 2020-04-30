@@ -26,5 +26,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     
+    @IBAction func showSideControllWindow(_ sender: AnyObject) {
+        gameSideWindowController.showWindow(sender)
+    }
+    
+    @IBAction func showGameWindow(_ sender: AnyObject) {
+        if let win = NSApplication.shared.mainWindow?.windowController {
+            win.showWindow(sender)
+        }
+    }
     
 }
