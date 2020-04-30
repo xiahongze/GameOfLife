@@ -11,10 +11,15 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
+    let storyboard = NSStoryboard(name: "Main", bundle: nil)
+    var gameSideWindowController = NSWindowController()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        if let gameSideWindowController = storyboard.instantiateController(withIdentifier: "GameSideController") as? NSWindowController {
+            self.gameSideWindowController = gameSideWindowController
+            self.gameSideWindowController.showWindow(nil)
+        }
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

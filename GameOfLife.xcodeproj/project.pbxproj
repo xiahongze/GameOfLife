@@ -11,11 +11,13 @@
 		C5A87F702449C20800FF18B5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C5A87F6F2449C20800FF18B5 /* GameScene.sks */; };
 		C5A87F722449C20800FF18B5 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = C5A87F712449C20800FF18B5 /* Actions.sks */; };
 		C5A87F742449C20800FF18B5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A87F732449C20800FF18B5 /* GameScene.swift */; };
-		C5A87F762449C20800FF18B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A87F752449C20800FF18B5 /* ViewController.swift */; };
+		C5A87F762449C20800FF18B5 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A87F752449C20800FF18B5 /* GameController.swift */; };
 		C5A87F782449C20B00FF18B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5A87F772449C20B00FF18B5 /* Assets.xcassets */; };
 		C5A87F7B2449C20B00FF18B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5A87F792449C20B00FF18B5 /* Main.storyboard */; };
 		C5A87F872449C20C00FF18B5 /* GameOfLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A87F862449C20C00FF18B5 /* GameOfLifeTests.swift */; };
 		C5A87F922449C20C00FF18B5 /* GameOfLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A87F912449C20C00FF18B5 /* GameOfLifeUITests.swift */; };
+		C5CD1D45245A7BEC00AA56A2 /* GameSideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CD1D44245A7BEC00AA56A2 /* GameSideController.swift */; };
+		C5CD1D46245A7BEC00AA56A2 /* GameSideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CD1D44245A7BEC00AA56A2 /* GameSideController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +43,7 @@
 		C5A87F6F2449C20800FF18B5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		C5A87F712449C20800FF18B5 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		C5A87F732449C20800FF18B5 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		C5A87F752449C20800FF18B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C5A87F752449C20800FF18B5 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		C5A87F772449C20B00FF18B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5A87F7A2449C20B00FF18B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C5A87F7C2449C20B00FF18B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 		C5A87F8D2449C20C00FF18B5 /* GameOfLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameOfLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5A87F912449C20C00FF18B5 /* GameOfLifeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfLifeUITests.swift; sourceTree = "<group>"; };
 		C5A87F932449C20C00FF18B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5CD1D44245A7BEC00AA56A2 /* GameSideController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSideController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,11 +109,12 @@
 				C5A87F6F2449C20800FF18B5 /* GameScene.sks */,
 				C5A87F712449C20800FF18B5 /* Actions.sks */,
 				C5A87F732449C20800FF18B5 /* GameScene.swift */,
-				C5A87F752449C20800FF18B5 /* ViewController.swift */,
+				C5A87F752449C20800FF18B5 /* GameController.swift */,
 				C5A87F772449C20B00FF18B5 /* Assets.xcassets */,
 				C5A87F792449C20B00FF18B5 /* Main.storyboard */,
 				C5A87F7C2449C20B00FF18B5 /* Info.plist */,
 				C5A87F7D2449C20B00FF18B5 /* GameOfLife.entitlements */,
+				C5CD1D44245A7BEC00AA56A2 /* GameSideController.swift */,
 			);
 			path = GameOfLife;
 			sourceTree = "<group>";
@@ -265,8 +269,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5A87F762449C20800FF18B5 /* ViewController.swift in Sources */,
+				C5A87F762449C20800FF18B5 /* GameController.swift in Sources */,
 				C5A87F742449C20800FF18B5 /* GameScene.swift in Sources */,
+				C5CD1D45245A7BEC00AA56A2 /* GameSideController.swift in Sources */,
 				C5A87F6E2449C20800FF18B5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5CD1D46245A7BEC00AA56A2 /* GameSideController.swift in Sources */,
 				C5A87F872449C20C00FF18B5 /* GameOfLifeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

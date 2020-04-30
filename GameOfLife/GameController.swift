@@ -10,10 +10,10 @@ import Cocoa
 import SpriteKit
 import GameplayKit
 
-class ViewController: NSViewController {
+class GameController: NSViewController {
 
     @IBOutlet var skView: SKView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,13 +24,13 @@ class ViewController: NSViewController {
                 scene.scaleMode = .aspectFill
                 print("have converted to GameScene!")
                 scene.initGrid(cols: 4, rows: 4)
-                
+
                 // Present the scene
                 view.presentScene(scene)
             }
-            
+
             view.ignoresSiblingOrder = true
-            
+
             view.showsFPS = true
             view.showsNodeCount = true
         }

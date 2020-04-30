@@ -84,13 +84,11 @@ class GameScene: SKScene {
             self.addChild(n)
         }
         if let node = getGridNode(atPoint: pos) {
-            print(node.fillColor)
             if node.fillColor.greenComponent == LIVE_COLOR.greenComponent {
                 node.fillColor = DEAD_COLOR
             } else {
                 node.fillColor = LIVE_COLOR
             }
-            print(node.fillColor)
         }
     }
 
