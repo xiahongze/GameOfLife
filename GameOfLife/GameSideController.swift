@@ -13,5 +13,11 @@ class GameSideController: NSViewController {
     @IBOutlet var newGameBut: NSButton!
     @IBOutlet var startBut: NSButton!
     @IBOutlet var densitySlider: NSSlider!
+    weak var gameController: GameController!
     
+    @IBAction func onClickNewGame(_ sender: AnyObject?) {
+        if let _ = gameController {
+            // confirmed gameController is set correctly
+        }
+    }
 }

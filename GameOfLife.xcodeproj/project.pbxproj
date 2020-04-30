@@ -18,6 +18,8 @@
 		C5A87F922449C20C00FF18B5 /* GameOfLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A87F912449C20C00FF18B5 /* GameOfLifeUITests.swift */; };
 		C5CD1D45245A7BEC00AA56A2 /* GameSideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CD1D44245A7BEC00AA56A2 /* GameSideController.swift */; };
 		C5CD1D46245A7BEC00AA56A2 /* GameSideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CD1D44245A7BEC00AA56A2 /* GameSideController.swift */; };
+		C5CD1D48245AD9E400AA56A2 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CD1D47245AD9E400AA56A2 /* SplitViewController.swift */; };
+		C5CD1D49245AD9E400AA56A2 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CD1D47245AD9E400AA56A2 /* SplitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,7 @@
 		C5A87F912449C20C00FF18B5 /* GameOfLifeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfLifeUITests.swift; sourceTree = "<group>"; };
 		C5A87F932449C20C00FF18B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5CD1D44245A7BEC00AA56A2 /* GameSideController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSideController.swift; sourceTree = "<group>"; };
+		C5CD1D47245AD9E400AA56A2 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,7 @@
 				C5A87F7C2449C20B00FF18B5 /* Info.plist */,
 				C5A87F7D2449C20B00FF18B5 /* GameOfLife.entitlements */,
 				C5CD1D44245A7BEC00AA56A2 /* GameSideController.swift */,
+				C5CD1D47245AD9E400AA56A2 /* SplitViewController.swift */,
 			);
 			path = GameOfLife;
 			sourceTree = "<group>";
@@ -269,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5CD1D48245AD9E400AA56A2 /* SplitViewController.swift in Sources */,
 				C5A87F762449C20800FF18B5 /* GameController.swift in Sources */,
 				C5A87F742449C20800FF18B5 /* GameScene.swift in Sources */,
 				C5CD1D45245A7BEC00AA56A2 /* GameSideController.swift in Sources */,
@@ -282,6 +287,7 @@
 			files = (
 				C5CD1D46245A7BEC00AA56A2 /* GameSideController.swift in Sources */,
 				C5A87F872449C20C00FF18B5 /* GameOfLifeTests.swift in Sources */,
+				C5CD1D49245AD9E400AA56A2 /* SplitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

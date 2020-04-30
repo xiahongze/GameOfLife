@@ -28,7 +28,8 @@ class GameScene: SKScene {
         let yunit = size.height / CGFloat(rows)
         (self.xunit, self.yunit) = (xunit, yunit)
         let snodeSize = CGSize(width: xunit, height: yunit)
-
+        
+        grid = []
         (0..<rows).forEach { i in
             grid.append(
                 (0..<cols).map { j in
