@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 import os.log
 
-class GameController: NSViewController {
+class GameController: NSViewController, NSWindowDelegate {
     @IBOutlet var skView: SKView!
     private var scene: GameScene? = nil
     
@@ -35,33 +35,33 @@ class GameController: NSViewController {
             view.showsNodeCount = true
         }
     }
-
+    
+    func resetScene(cols: Int, rows: Int) {
+        scene?.initGrid(cols: cols, rows: cols)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         loadSkView()
     }
     
+    /**
+     * skView has to be paused on window close
+     * and then resumed when the view comes back.
+     * otherwise, the game scene is not responsive.
+     * This is made possible by using NSWindowDelegate.
+     */
     override func viewDidAppear() {
-        print("view did appear \(String(describing: skView))")
-        print("scene is \(String(describing: scene))")
-//        skView!.awakeFromNib()
-        skView!.display()
-//        loadSkView()
-//        skView!.window!.makeFirstResponder(skView)
-//        if scene!.becomeFirstResponder() {
-//            print("have become first responder")
-//        }
-//        skView!.window!.acceptsMouseMovedEvents = true
-//        skView!.window!.makeFirstResponder(skView!.scene)
-//        if scene!.isPaused {
-//            print("scene is paused")
-//            scene!.isPaused = false
-//        }
+        skView.isPaused = false
+    }
+    
+    func windowWillClose(_ notification: Notification) {
+        skView.isPaused = true
     }
 
-    func resetScene(cols: Int, rows: Int) {
-        scene?.initGrid(cols: cols, rows: cols)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        view.window?.delegate = self
     }
 }
 
