@@ -10,8 +10,8 @@ import Foundation
 import Cocoa
 import os.log
 
-let INIT_NCOLS = 4
-let INIT_NROWS = 4
+let INIT_NCOLS = 8
+let INIT_NROWS = 8
 
 class SplitViewController: NSSplitViewController {
     override func awakeFromNib() {

@@ -13,7 +13,12 @@ class GameSideController: NSViewController {
     @IBOutlet var newGameBut: NSButton!
     @IBOutlet var startBut: NSButton!
     @IBOutlet var densitySlider: NSSlider!
+    @IBOutlet var densityLabel: NSTextField!
+    @IBOutlet var colsText: NSTextField!
+    @IBOutlet var rowsText: NSTextField!
+    private var frac: Float = 0.5
     weak var gameController: GameController!
+    
     private var delay: UInt32 = 100000 // 0.1 sec == 100000, usleep(delay)
     
     @IBAction func onClickNewGame(_ sender: AnyObject?) {
@@ -22,7 +27,16 @@ class GameSideController: NSViewController {
         }
     }
     
+    @IBAction func onMoveSlider(_ sender: NSSlider) {
+        (frac, densityLabel.stringValue) = (sender.floatValue, String(format: "%.2f", sender.floatValue))
+    }
+    
     func setDelay(delay: UInt32) {
         self.delay = delay
+    }
+    
+    override func viewDidLoad() {
+        rowsText.integerValue = INIT_NROWS
+        colsText.integerValue = INIT_NCOLS
     }
 }

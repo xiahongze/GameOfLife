@@ -745,7 +745,10 @@
                             </button>
                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qjw-JE-bJf">
                                 <rect key="frame" x="18" y="498" width="114" height="19"/>
-                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="rIo-U7-tsp"/>
+                                <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" sliderType="linear" id="rIo-U7-tsp"/>
+                                <connections>
+                                    <action selector="onMoveSlider:" target="3Cv-P6-i9m" id="F6b-qt-TRk"/>
+                                </connections>
                             </slider>
                             <button verticalHuggingPriority="750" springLoaded="YES" id="lN0-xX-fPX">
                                 <rect key="frame" x="14" y="34" width="122" height="32"/>
@@ -861,8 +864,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="colsText" destination="wi0-yv-ChD" id="RZt-rg-5df"/>
+                        <outlet property="densityLabel" destination="8WU-dr-U3y" id="fed-KP-3aC"/>
                         <outlet property="densitySlider" destination="qjw-JE-bJf" id="0Xd-G2-NiQ"/>
                         <outlet property="newGameBut" destination="IW2-NG-3Fo" id="tOt-O8-nCM"/>
+                        <outlet property="randomNum" destination="8WU-dr-U3y" id="Lds-SP-2un"/>
+                        <outlet property="rowsText" destination="LnW-Ip-3ua" id="sRl-la-SkG"/>
                         <outlet property="startBut" destination="lN0-xX-fPX" id="abI-XR-aw4"/>
                     </connections>
                 </viewController>
