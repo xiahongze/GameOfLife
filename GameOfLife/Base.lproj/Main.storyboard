@@ -729,11 +729,11 @@
             <objects>
                 <viewController storyboardIdentifier="GameSideControllerView" id="3Cv-P6-i9m" customClass="GameSideController" customModule="GameOfLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="tlV-gH-oxW">
-                        <rect key="frame" x="0.0" y="0.0" width="144" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" id="IW2-NG-3Fo">
-                                <rect key="frame" x="8" y="204" width="122" height="32"/>
+                                <rect key="frame" x="14" y="552" width="122" height="32"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <buttonCell key="cell" type="push" title="New Game" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="n0t-ep-BnG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -743,20 +743,114 @@
                                     <action selector="onClickNewGame:" target="3Cv-P6-i9m" id="Wix-Uz-G9W"/>
                                 </connections>
                             </button>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qjw-JE-bJf">
-                                <rect key="frame" x="12" y="101" width="114" height="19"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qjw-JE-bJf">
+                                <rect key="frame" x="18" y="498" width="114" height="19"/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="rIo-U7-tsp"/>
                             </slider>
-                            <button verticalHuggingPriority="750" id="lN0-xX-fPX">
-                                <rect key="frame" x="8" y="146" width="122" height="32"/>
+                            <button verticalHuggingPriority="750" springLoaded="YES" id="lN0-xX-fPX">
+                                <rect key="frame" x="14" y="34" width="122" height="32"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="75A-CM-i8z">
-                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPlayPauseTemplate" imagePosition="overlaps" borderStyle="border" inset="2" id="75A-CM-i8z">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TGZ-eA-cof">
+                                <rect key="frame" x="48" y="523" width="54" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Random" id="we7-uo-371">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MkA-4A-Dlr">
+                                <rect key="frame" x="18" y="476" width="13" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="0" id="y01-2J-04w">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e3n-Cp-4ab">
+                                <rect key="frame" x="119" y="476" width="10" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="1" id="6AO-LP-kW8">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8WU-dr-U3y">
+                                <rect key="frame" x="48" y="476" width="54" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0.5" id="B3o-nk-TjM">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wi0-yv-ChD">
+                                <rect key="frame" x="19" y="413" width="50" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="KtP-Qt-gGf"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="4" placeholderString="4" drawsBackground="YES" id="spX-lZ-6Aw">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="WvC-QU-p0G"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LnW-Ip-3ua">
+                                <rect key="frame" x="83" y="413" width="50" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="4" placeholderString="4" drawsBackground="YES" id="OAJ-Bs-Hhk">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="a8B-iy-IT4"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0nJ-Aa-76m">
+                                <rect key="frame" x="15" y="442" width="58" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Columns" id="PAs-zC-vaD">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Sw-CP-8qJ">
+                                <rect key="frame" x="90" y="442" width="36" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Rows" id="jgB-yC-Cii">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="MkA-4A-Dlr" firstAttribute="top" secondItem="qjw-JE-bJf" secondAttribute="bottom" constant="8" symbolic="YES" id="04l-fx-CT5"/>
+                            <constraint firstItem="8WU-dr-U3y" firstAttribute="baseline" secondItem="e3n-Cp-4ab" secondAttribute="baseline" id="0hb-oi-btn"/>
+                            <constraint firstItem="MkA-4A-Dlr" firstAttribute="baseline" secondItem="8WU-dr-U3y" secondAttribute="baseline" id="38j-YK-bsd"/>
+                            <constraint firstItem="TGZ-eA-cof" firstAttribute="leading" secondItem="8WU-dr-U3y" secondAttribute="leading" id="3YU-Hd-SXA"/>
+                            <constraint firstItem="9Sw-CP-8qJ" firstAttribute="leading" secondItem="0nJ-Aa-76m" secondAttribute="trailing" constant="21" id="4yR-CZ-3rU"/>
+                            <constraint firstItem="0nJ-Aa-76m" firstAttribute="baseline" secondItem="9Sw-CP-8qJ" secondAttribute="baseline" id="5Au-QH-5XA"/>
+                            <constraint firstItem="0nJ-Aa-76m" firstAttribute="centerX" secondItem="wi0-yv-ChD" secondAttribute="centerX" id="B5k-JI-Xm5"/>
+                            <constraint firstItem="TGZ-eA-cof" firstAttribute="top" secondItem="IW2-NG-3Fo" secondAttribute="bottom" constant="20" id="BAf-yt-UJW"/>
+                            <constraint firstItem="LnW-Ip-3ua" firstAttribute="leading" secondItem="wi0-yv-ChD" secondAttribute="trailing" constant="14" id="Iyb-bX-QZE"/>
+                            <constraint firstItem="wi0-yv-ChD" firstAttribute="top" secondItem="0nJ-Aa-76m" secondAttribute="bottom" constant="8" symbolic="YES" id="QNa-sV-TUo"/>
+                            <constraint firstItem="wi0-yv-ChD" firstAttribute="leading" secondItem="tlV-gH-oxW" secondAttribute="leading" constant="19" id="SDO-yd-Vun"/>
+                            <constraint firstAttribute="trailing" secondItem="LnW-Ip-3ua" secondAttribute="trailing" constant="17" id="V5B-YJ-G0X"/>
+                            <constraint firstItem="TGZ-eA-cof" firstAttribute="centerX" secondItem="qjw-JE-bJf" secondAttribute="centerX" id="Vfu-yg-lbX"/>
+                            <constraint firstItem="TGZ-eA-cof" firstAttribute="trailing" secondItem="8WU-dr-U3y" secondAttribute="trailing" id="XCd-4V-ZjQ"/>
+                            <constraint firstItem="wi0-yv-ChD" firstAttribute="baseline" secondItem="LnW-Ip-3ua" secondAttribute="baseline" id="aeb-nj-pTh"/>
+                            <constraint firstItem="qjw-JE-bJf" firstAttribute="leading" secondItem="MkA-4A-Dlr" secondAttribute="leading" id="diB-YM-4PW"/>
+                            <constraint firstItem="9Sw-CP-8qJ" firstAttribute="centerX" secondItem="LnW-Ip-3ua" secondAttribute="centerX" id="iPe-vq-4L0"/>
+                            <constraint firstItem="0nJ-Aa-76m" firstAttribute="leading" secondItem="tlV-gH-oxW" secondAttribute="leading" constant="17" id="nXr-7O-wB6"/>
+                            <constraint firstItem="qjw-JE-bJf" firstAttribute="top" secondItem="TGZ-eA-cof" secondAttribute="bottom" constant="8" symbolic="YES" id="pJl-On-JnT"/>
+                            <constraint firstItem="e3n-Cp-4ab" firstAttribute="leading" secondItem="8WU-dr-U3y" secondAttribute="trailing" constant="21" id="pKz-72-uAq"/>
+                            <constraint firstAttribute="trailing" secondItem="qjw-JE-bJf" secondAttribute="trailing" constant="20" symbolic="YES" id="sDY-4r-HOf"/>
+                            <constraint firstItem="qjw-JE-bJf" firstAttribute="trailing" secondItem="IW2-NG-3Fo" secondAttribute="trailing" id="vuk-kX-tmA"/>
+                            <constraint firstItem="qjw-JE-bJf" firstAttribute="leading" secondItem="IW2-NG-3Fo" secondAttribute="leading" id="w4a-u3-rgz"/>
+                            <constraint firstItem="0nJ-Aa-76m" firstAttribute="top" secondItem="MkA-4A-Dlr" secondAttribute="bottom" constant="18" id="yts-sE-PQG"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="densitySlider" destination="qjw-JE-bJf" id="0Xd-G2-NiQ"/>
@@ -766,7 +860,7 @@
                 </viewController>
                 <customObject id="nI4-Yb-XQY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-493" y="1359"/>
+            <point key="canvasLocation" x="-490" y="1524"/>
         </scene>
         <!--Game Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -810,4 +904,7 @@
             <point key="canvasLocation" x="115" y="802"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSTouchBarPlayPauseTemplate" width="23" height="30"/>
+    </resources>
 </document>
