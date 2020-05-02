@@ -14,8 +14,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var showMenu: NSMenuItem!
     
     let storyboard = NSStoryboard(name: "Main", bundle: nil)
-//    var gameSideWindowController = NSWindowController()
-//    var gameWindowController = NSWindowController()
     var gameWindows = [String:NSWindowController]()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {

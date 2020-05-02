@@ -21,14 +21,20 @@ class GameScene: SKScene {
     private var rows: Int?
     private var xunit: CGFloat?
     private var yunit: CGFloat?
+    private var world: World?
 
-    func initGrid(cols: Int, rows: Int) {
+    func setup(rows: Int, cols: Int) {
         (self.cols, self.rows) = (cols, rows)
+        self.world = World(rows, cols)
+        initGrid(rows, cols)
+    }
+
+    func initGrid(_ rows: Int, _ cols: Int) {
         let xunit = size.width / CGFloat(cols)
         let yunit = size.height / CGFloat(rows)
         (self.xunit, self.yunit) = (xunit, yunit)
         let snodeSize = CGSize(width: xunit, height: yunit)
-        
+
         grid = []
         (0..<rows).forEach { i in
             grid.append(

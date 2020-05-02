@@ -13,38 +13,34 @@ import os.log
 
 class GameController: NSViewController, NSWindowDelegate {
     @IBOutlet var skView: SKView!
-    private var scene: GameScene? = nil
-    
+    var scene: GameScene? = nil
+
     func loadSkView() {
         if let view = self.skView {
-            // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
-                // Set the scale mode to scale to fit the view
+                scene.setup(rows: INIT_NROWS, cols: INIT_NCOLS)
                 scene.scaleMode = .fill
-                os_log("have converted to GameScene!", type: .debug)
-                scene.initGrid(cols: 4, rows: 4)
-                // Present the scene
-                view.presentScene(scene)
-
                 self.scene = scene
+                view.presentScene(scene)
+                os_log("loaded scene", type: .debug)
             }
 
             view.ignoresSiblingOrder = true
-
             view.showsFPS = true
             view.showsNodeCount = true
         }
     }
-    
+
     func resetScene(cols: Int, rows: Int) {
-        scene?.initGrid(cols: cols, rows: cols)
+        scene?.initGrid(cols, cols)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("loaded GameController")
         loadSkView()
     }
-    
+
     /**
      * skView has to be paused on window close
      * and then resumed when the view comes back.
@@ -54,7 +50,7 @@ class GameController: NSViewController, NSWindowDelegate {
     override func viewDidAppear() {
         skView.isPaused = false
     }
-    
+
     func windowWillClose(_ notification: Notification) {
         skView.isPaused = true
     }

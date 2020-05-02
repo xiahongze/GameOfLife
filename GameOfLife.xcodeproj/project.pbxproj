@@ -20,6 +20,8 @@
 		C5CD1D46245A7BEC00AA56A2 /* GameSideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CD1D44245A7BEC00AA56A2 /* GameSideController.swift */; };
 		C5CD1D48245AD9E400AA56A2 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CD1D47245AD9E400AA56A2 /* SplitViewController.swift */; };
 		C5CD1D49245AD9E400AA56A2 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CD1D47245AD9E400AA56A2 /* SplitViewController.swift */; };
+		C5CD1D4E245D3CD700AA56A2 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CD1D4D245D3CD700AA56A2 /* World.swift */; };
+		C5CD1D4F245D3CD700AA56A2 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CD1D4D245D3CD700AA56A2 /* World.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,7 @@
 		C5A87F932449C20C00FF18B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5CD1D44245A7BEC00AA56A2 /* GameSideController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSideController.swift; sourceTree = "<group>"; };
 		C5CD1D47245AD9E400AA56A2 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		C5CD1D4D245D3CD700AA56A2 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,7 @@
 				C5A87F7D2449C20B00FF18B5 /* GameOfLife.entitlements */,
 				C5CD1D44245A7BEC00AA56A2 /* GameSideController.swift */,
 				C5CD1D47245AD9E400AA56A2 /* SplitViewController.swift */,
+				C5CD1D4D245D3CD700AA56A2 /* World.swift */,
 			);
 			path = GameOfLife;
 			sourceTree = "<group>";
@@ -273,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5CD1D4E245D3CD700AA56A2 /* World.swift in Sources */,
 				C5CD1D48245AD9E400AA56A2 /* SplitViewController.swift in Sources */,
 				C5A87F762449C20800FF18B5 /* GameController.swift in Sources */,
 				C5A87F742449C20800FF18B5 /* GameScene.swift in Sources */,
@@ -287,6 +292,7 @@
 			files = (
 				C5CD1D46245A7BEC00AA56A2 /* GameSideController.swift in Sources */,
 				C5A87F872449C20C00FF18B5 /* GameOfLifeTests.swift in Sources */,
+				C5CD1D4F245D3CD700AA56A2 /* World.swift in Sources */,
 				C5CD1D49245AD9E400AA56A2 /* SplitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
