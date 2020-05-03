@@ -18,43 +18,54 @@ class GameSideController: NSViewController {
     @IBOutlet var colsText: NSTextField!
     @IBOutlet var rowsText: NSTextField!
     private var frac: Float = 0.5
+    private var running = false
     weak var gameController: GameController!
-    
+
     private var delay: UInt32 = 1000000 // 0.1 sec == 100000, usleep(delay)
-    
+
     @IBAction func onClickNewGame(_ sender: AnyObject?) {
         if let _ = gameController {
             // confirmed gameController is set correctly
         }
     }
-    
+
     @IBAction func onMoveSlider(_ sender: NSSlider) {
         (frac, densityLabel.stringValue) = (sender.floatValue, String(format: "%.2f", sender.floatValue))
     }
-    
+
     func setDelay(delay: UInt32) {
         self.delay = delay
     }
-    
+
     override func viewDidLoad() {
         rowsText.integerValue = INIT_NROWS
         colsText.integerValue = INIT_NCOLS
     }
-    
+
     @IBAction func randomize(_ sender: NSButton) {
         gameController.scene?.randomize(frac)
     }
-    
+
     @IBAction func startOrPause(_ sender: NSButton) {
-        var count = 0
-        while gameController.scene.step() && sender.state == .on {
-            count += 1
-            if count % 10 == 0 {
-                os_log("at step %d", type: .debug, count)
-            }
-            usleep(delay)
+        if sender.state == .off {
+            os_log("pause the game", type: .debug)
+            running = false
+            return
         }
-        os_log("paused or stop at step %d", type: .debug, count)
-        sender.state = .off
+        running = true
+        let dispatchQueue = DispatchQueue(label: "runGame", qos: .background)
+        dispatchQueue.async {
+            //Time consuming task here
+            var count = 0
+            while self.gameController.scene.step() && self.running {
+                count += 1
+                if count % 10 == 0 {
+                    os_log("at step %d", type: .debug, count)
+                }
+                usleep(self.delay)
+            }
+            os_log("stopped at step %d", type: .debug, count)
+            self.running = false
+        }
     }
 }

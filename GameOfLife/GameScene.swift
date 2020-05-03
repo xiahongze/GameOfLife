@@ -78,7 +78,6 @@ class GameScene: SKScene {
 
     func step() -> Bool {
         let diff = world.step()
-        os_log("about to flip %d points", type: .debug, diff.count)
         diff.forEach { i, j in
             world.flipState(i, j)
             syncFromWorld(i, j)
