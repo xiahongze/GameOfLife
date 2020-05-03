@@ -52,7 +52,6 @@ class GameSideController: NSViewController {
             if count % 10 == 0 {
                 os_log("at step %d", type: .debug, count)
             }
-            gameController.presentScene()
             usleep(delay)
         }
         os_log("paused or stop at step %d", type: .debug, count)
