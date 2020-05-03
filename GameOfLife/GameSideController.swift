@@ -12,7 +12,6 @@ import os.log
 
 class GameSideController: NSViewController {
     @IBOutlet var newGameBut: NSButton!
-    @IBOutlet var startBut: NSButton!
     @IBOutlet var densitySlider: NSSlider!
     @IBOutlet var densityLabel: NSTextField!
     @IBOutlet var colsText: NSTextField!
@@ -47,7 +46,7 @@ class GameSideController: NSViewController {
     }
 
     @IBAction func startOrPause(_ sender: NSButton) {
-        if sender.state == .off {
+        if running {
             os_log("pause the game", type: .debug)
             running = false
             return

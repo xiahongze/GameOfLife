@@ -754,7 +754,7 @@
                                 <rect key="frame" x="14" y="34" width="122" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPlayPauseTemplate" imagePosition="overlaps" borderStyle="border" inset="2" id="75A-CM-i8z">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
@@ -875,7 +875,6 @@
                         <outlet property="densitySlider" destination="qjw-JE-bJf" id="0Xd-G2-NiQ"/>
                         <outlet property="newGameBut" destination="IW2-NG-3Fo" id="tOt-O8-nCM"/>
                         <outlet property="rowsText" destination="LnW-Ip-3ua" id="sRl-la-SkG"/>
-                        <outlet property="startBut" destination="lN0-xX-fPX" id="abI-XR-aw4"/>
                     </connections>
                 </viewController>
                 <customObject id="nI4-Yb-XQY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
