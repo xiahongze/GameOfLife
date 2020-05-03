@@ -17,9 +17,20 @@ class World {
     private let rows: Int
     private let cols: Int
     
-    func setLive(i: Int, j: Int) {
+    func getState(_ i: Int, _ j: Int) -> Bool {
+        guard i < rows && j < cols else {
+            preconditionFailure("index of out bound, (\(i), \(j)) vs (\(rows), \(cols))")
+        }
+        return cells[i][j]
+    }
+    
+    func setState(i: Int, j: Int, state: Bool) {
         // set a cell to alive
-        cells[i][j] = true
+        cells[i][j] = state
+    }
+    
+    func flipState(i: Int, j: Int) {
+        cells[i][j] = !cells[i][j]
     }
     
     init(_ nrows: Int, _ ncols: Int) { // empty world
@@ -29,8 +40,12 @@ class World {
 
     convenience init(nrows: Int, ncols: Int, frac: Float) { // random world
         self.init(nrows, ncols)
+        randomize(frac)
+    }
+    
+    func randomize(_ frac: Float) {
         cells.indices.forEach { i in
-            (0..<ncols).forEach { j in
+            (0..<cols).forEach { j in
                 cells[i][j] = Float.random(in: 0 ..< 1) < frac
             }
         }

@@ -14,7 +14,8 @@ let INIT_NCOLS = 8
 let INIT_NROWS = 8
 
 class SplitViewController: NSSplitViewController {
-    override func awakeFromNib() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         guard splitViewItems.count == 2 else {
             preconditionFailure("splitViewCount should be exactly 2")
         }
@@ -24,10 +25,6 @@ class SplitViewController: NSSplitViewController {
             gameSideController.gameController = gameControler
             os_log("setting gameController successfully", type: .debug)
         }
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("loaded split view")
-
+        os_log("loaded split view")
     }
 }

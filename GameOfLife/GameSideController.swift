@@ -39,4 +39,8 @@ class GameSideController: NSViewController {
         rowsText.integerValue = INIT_NROWS
         colsText.integerValue = INIT_NCOLS
     }
+    
+    @IBAction func randomize(_ sender: NSButton) {
+        
+    }
 }

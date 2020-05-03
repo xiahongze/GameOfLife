@@ -16,12 +16,33 @@ class GameScene: SKScene {
 
     private var label: SKLabelNode?
     private var spinnyNode: SKShapeNode?
+    
+    /**
+     * private members that have to be initialized before use
+     */
     private var grid = [[SKShapeNode]]()
-    private var cols: Int?
-    private var rows: Int?
-    private var xunit: CGFloat?
-    private var yunit: CGFloat?
-    private var world: World?
+    private var cols: Int!
+    private var rows: Int!
+    private var xunit: CGFloat!
+    private var yunit: CGFloat!
+    private var world: World!
+
+    func randomize(_ frac: Float) {
+        world.randomize(frac)
+        syncFromWorld()
+    }
+
+    func syncFromWorld() {
+        for i in 0..<rows! {
+            for j in 0..<cols! {
+                if world.getState(i, j) {
+                    grid[i][j].fillColor = LIVE_COLOR
+                } else {
+                    grid[i][j].fillColor = DEAD_COLOR
+                }
+            }
+        }
+    }
 
     func setup(rows: Int, cols: Int) {
         (self.cols, self.rows) = (cols, rows)
@@ -30,9 +51,7 @@ class GameScene: SKScene {
     }
 
     func initGrid(_ rows: Int, _ cols: Int) {
-        let xunit = size.width / CGFloat(cols)
-        let yunit = size.height / CGFloat(rows)
-        (self.xunit, self.yunit) = (xunit, yunit)
+        (xunit, yunit) = (size.width / CGFloat(cols), size.height / CGFloat(rows))
         let snodeSize = CGSize(width: xunit, height: yunit)
 
         grid = []
@@ -50,15 +69,11 @@ class GameScene: SKScene {
         }
     }
 
-    func getGridNode(atPoint pos: CGPoint) -> SKShapeNode? {
-        if let xunit = self.xunit, let yunit = self.yunit {
-            let i = Int((pos.x + CGFloat(0.5) * size.width) / xunit)
-            let j = Int((pos.y + CGFloat(0.5) * size.height) / yunit)
-            return grid[i][j]
-        }
-        return nil
+    func getGridNode(atPoint pos: CGPoint) -> SKShapeNode {
+        let i = Int((pos.x + CGFloat(0.5) * size.width) / xunit)
+        let j = Int((pos.y + CGFloat(0.5) * size.height) / yunit)
+        return grid[i][j]
     }
-
 
     override func didMove(to view: SKView) {
 
@@ -90,13 +105,13 @@ class GameScene: SKScene {
             n.strokeColor = SKColor.green
             self.addChild(n)
         }
-        if let node = getGridNode(atPoint: pos) {
-            if node.fillColor.greenComponent == LIVE_COLOR.greenComponent {
-                node.fillColor = DEAD_COLOR
-            } else {
-                node.fillColor = LIVE_COLOR
-            }
+        let node = getGridNode(atPoint: pos)
+        if node.fillColor.greenComponent == LIVE_COLOR.greenComponent {
+            node.fillColor = DEAD_COLOR
+        } else {
+            node.fillColor = LIVE_COLOR
         }
+
     }
 
     func touchMoved(toPoint pos: CGPoint) {
