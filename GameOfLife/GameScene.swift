@@ -16,7 +16,7 @@ class GameScene: SKScene {
 
     private var label: SKLabelNode?
     private var spinnyNode: SKShapeNode?
-    
+
     /**
      * private members that have to be initialized before use
      */
@@ -32,14 +32,20 @@ class GameScene: SKScene {
         syncFromWorld()
     }
 
+    func syncFromWorld(_ i: Int, _ j: Int) {
+        // Sync individual state
+        if world.getState(i, j) {
+            grid[i][j].fillColor = LIVE_COLOR
+        } else {
+            grid[i][j].fillColor = DEAD_COLOR
+        }
+    }
+
     func syncFromWorld() {
+        // Sync the whole world
         for i in 0..<rows! {
             for j in 0..<cols! {
-                if world.getState(i, j) {
-                    grid[i][j].fillColor = LIVE_COLOR
-                } else {
-                    grid[i][j].fillColor = DEAD_COLOR
-                }
+                syncFromWorld(i, j)
             }
         }
     }
@@ -69,10 +75,10 @@ class GameScene: SKScene {
         }
     }
 
-    func getGridNode(atPoint pos: CGPoint) -> SKShapeNode {
+    func getGridPos(atPoint pos: CGPoint) -> (Int, Int) {
         let i = Int((pos.x + CGFloat(0.5) * size.width) / xunit)
         let j = Int((pos.y + CGFloat(0.5) * size.height) / yunit)
-        return grid[i][j]
+        return (i, j)
     }
 
     override func didMove(to view: SKView) {
@@ -105,13 +111,9 @@ class GameScene: SKScene {
             n.strokeColor = SKColor.green
             self.addChild(n)
         }
-        let node = getGridNode(atPoint: pos)
-        if node.fillColor.greenComponent == LIVE_COLOR.greenComponent {
-            node.fillColor = DEAD_COLOR
-        } else {
-            node.fillColor = LIVE_COLOR
-        }
-
+        let (i, j) = getGridPos(atPoint: pos)
+        world.flipState(i, j)
+        syncFromWorld(i, j)
     }
 
     func touchMoved(toPoint pos: CGPoint) {

@@ -24,12 +24,12 @@ class World {
         return cells[i][j]
     }
     
-    func setState(i: Int, j: Int, state: Bool) {
+    func setState(_ i: Int, _ j: Int, _ state: Bool) {
         // set a cell to alive
         cells[i][j] = state
     }
     
-    func flipState(i: Int, j: Int) {
+    func flipState(_ i: Int, _ j: Int) {
         cells[i][j] = !cells[i][j]
     }
     
