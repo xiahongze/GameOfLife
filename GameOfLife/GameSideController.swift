@@ -11,7 +11,6 @@ import Cocoa
 import os.log
 
 class GameSideController: NSViewController {
-    @IBOutlet var newGameBut: NSButton!
     @IBOutlet var densitySlider: NSSlider!
     @IBOutlet var densityLabel: NSTextField!
     @IBOutlet var colsText: NSTextField!
@@ -23,9 +22,7 @@ class GameSideController: NSViewController {
     private var delay: UInt32 = 1000000 // 0.1 sec == 100000, usleep(delay)
 
     @IBAction func onClickNewGame(_ sender: AnyObject?) {
-        if let _ = gameController {
-            // confirmed gameController is set correctly
-        }
+        gameController.scene.setup(rows: rowsText.integerValue, cols: colsText.integerValue)
     }
 
     @IBAction func onMoveSlider(_ sender: NSSlider) {

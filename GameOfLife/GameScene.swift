@@ -54,15 +54,16 @@ class GameScene: SKScene {
     func setup(rows: Int, cols: Int) {
         (self.cols, self.rows) = (cols, rows)
         self.world = World(rows, cols)
+        grid.forEach(removeChildren)
         initGrid(rows, cols)
     }
 
     func initGrid(_ rows: Int, _ cols: Int) {
-        (xunit, yunit) = (size.width / CGFloat(cols), size.height / CGFloat(rows))
+        (xunit, yunit) = (size.width / CGFloat(rows), size.height / CGFloat(cols))
         let snodeSize = CGSize(width: xunit, height: yunit)
-
         grid = []
-        (0..<rows).forEach { i in
+        
+        for i in 0..<rows {
             grid.append(
                 (0..<cols).map { j in
                     let node = SKShapeNode(rectOf: snodeSize)
@@ -94,7 +95,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
 
         // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
+        self.label = self.childNode(withName: "//gameOfLife") as? SKLabelNode
         if let label = self.label {
             label.alpha = 0.0
             label.run(SKAction.fadeIn(withDuration: 2.0))

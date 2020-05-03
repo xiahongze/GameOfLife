@@ -65,7 +65,7 @@ class World {
         // return list of cells that should be flipped
         var diff = [(Int, Int)]()
         for i in 0..<rows {
-            for j in 0..<rows {
+            for j in 0..<cols {
                 if willLive(i, j) != cells[i][j] {
                     diff.append((i, j))
                 }

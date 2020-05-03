@@ -873,7 +873,6 @@
                         <outlet property="colsText" destination="wi0-yv-ChD" id="RZt-rg-5df"/>
                         <outlet property="densityLabel" destination="8WU-dr-U3y" id="fed-KP-3aC"/>
                         <outlet property="densitySlider" destination="qjw-JE-bJf" id="0Xd-G2-NiQ"/>
-                        <outlet property="newGameBut" destination="IW2-NG-3Fo" id="tOt-O8-nCM"/>
                         <outlet property="rowsText" destination="LnW-Ip-3ua" id="sRl-la-SkG"/>
                     </connections>
                 </viewController>
