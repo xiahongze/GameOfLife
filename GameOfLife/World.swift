@@ -9,30 +9,33 @@ import Foundation
 
 class World {
     private var cells = [[Bool]]()
-    private var ended = false
     private let neighbours = [
         (-1, 0), (0, -1), (1, 0), (0, 1),
         (1, 1), (-1, -1), (1, -1), (-1, 1)
     ]
     private let rows: Int
     private let cols: Int
-    
+
     func getState(_ i: Int, _ j: Int) -> Bool {
         guard i < rows && j < cols else {
             preconditionFailure("index of out bound, (\(i), \(j)) vs (\(rows), \(cols))")
         }
         return cells[i][j]
     }
-    
+
     func setState(_ i: Int, _ j: Int, _ state: Bool) {
         // set a cell to alive
         cells[i][j] = state
     }
-    
+
     func flipState(_ i: Int, _ j: Int) {
         cells[i][j] = !cells[i][j]
     }
-    
+
+    func flipState(at positions: [(Int, Int)]) {
+        positions.forEach(flipState)
+    }
+
     init(_ nrows: Int, _ ncols: Int) { // empty world
         (rows, cols) = (nrows, ncols)
         cells = Array(repeating: Array(repeating: false, count: ncols), count: nrows)
@@ -42,7 +45,7 @@ class World {
         self.init(nrows, ncols)
         randomize(frac)
     }
-    
+
     func randomize(_ frac: Float) {
         cells.indices.forEach { i in
             (0..<cols).forEach { j in
@@ -58,22 +61,20 @@ class World {
         }
     }
 
-    func step() {
-        var newCells = Array(repeating: Array(repeating: false, count: rows), count: rows)
-        var same = true
+    func step() -> [(Int, Int)] {
+        // return list of cells that should be flipped
+        var diff = [(Int, Int)]()
         for i in 0..<rows {
             for j in 0..<rows {
-                newCells[i][j] = willLive(i: i, j: j)
-                same = (newCells[i][j] == cells[i][j]) && same
+                if willLive(i, j) != cells[i][j] {
+                    diff.append((i, j))
+                }
             }
         }
-        cells = newCells
-        if same {
-            ended = true
-        }
+        return diff
     }
 
-    func willLive(i: Int, j: Int) -> Bool {
+    func willLive(_ i: Int, _ j: Int) -> Bool {
         /**
            1. Any live cell with two or three live neighbors survives.
            2. Any dead cell with three live neighbors becomes a live cell.
@@ -96,12 +97,8 @@ class World {
             return false
         }
     }
-    
+
     func filterXY(x: Int, y: Int) -> Bool {
         return x >= 0 && y >= 0 && x < rows && y < cols
-    }
-    
-    func hasEnded() -> Bool {
-        return ended
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import Cocoa
+import os.log
 
 class GameSideController: NSViewController {
     @IBOutlet var newGameBut: NSButton!
@@ -19,7 +20,7 @@ class GameSideController: NSViewController {
     private var frac: Float = 0.5
     weak var gameController: GameController!
     
-    private var delay: UInt32 = 100000 // 0.1 sec == 100000, usleep(delay)
+    private var delay: UInt32 = 1000000 // 0.1 sec == 100000, usleep(delay)
     
     @IBAction func onClickNewGame(_ sender: AnyObject?) {
         if let _ = gameController {
@@ -41,6 +42,20 @@ class GameSideController: NSViewController {
     }
     
     @IBAction func randomize(_ sender: NSButton) {
-        
+        gameController.scene?.randomize(frac)
+    }
+    
+    @IBAction func startOrPause(_ sender: NSButton) {
+        var count = 0
+        while gameController.scene.step() && sender.state == .on {
+            count += 1
+            if count % 10 == 0 {
+                os_log("at step %d", type: .debug, count)
+            }
+            gameController.presentScene()
+            usleep(delay)
+        }
+        os_log("paused or stop at step %d", type: .debug, count)
+        sender.state = .off
     }
 }

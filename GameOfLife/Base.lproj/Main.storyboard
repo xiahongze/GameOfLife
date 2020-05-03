@@ -737,7 +737,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="New Game" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="n0t-ep-BnG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="onClickNewGame:" target="3Cv-P6-i9m" id="Wix-Uz-G9W"/>
@@ -755,13 +755,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPlayPauseTemplate" imagePosition="overlaps" borderStyle="border" inset="2" id="75A-CM-i8z">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="startOrPause:" target="3Cv-P6-i9m" id="h81-ZV-TZ8"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MkA-4A-Dlr">
                                 <rect key="frame" x="18" y="476" width="13" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="0" id="y01-2J-04w">
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -772,7 +775,7 @@
                                     <constraint firstAttribute="width" constant="6" id="zCe-9I-vcZ"/>
                                 </constraints>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="1" id="6AO-LP-kW8">
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -780,7 +783,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8WU-dr-U3y">
                                 <rect key="frame" x="48" y="476" width="54" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0.5" id="B3o-nk-TjM">
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -789,7 +792,7 @@
                                 <rect key="frame" x="19" y="413" width="50" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="4" placeholderString="4" drawsBackground="YES" id="spX-lZ-6Aw">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="WvC-QU-p0G"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -798,7 +801,7 @@
                                 <rect key="frame" x="83" y="413" width="50" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="4" placeholderString="4" drawsBackground="YES" id="OAJ-Bs-Hhk">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="a8B-iy-IT4"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -806,7 +809,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0nJ-Aa-76m">
                                 <rect key="frame" x="15" y="442" width="58" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Columns" id="PAs-zC-vaD">
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -817,7 +820,7 @@
                                     <constraint firstAttribute="width" constant="32" id="TKv-y8-gk5"/>
                                 </constraints>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Rows" id="jgB-yC-Cii">
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -829,7 +832,7 @@
                                 <rect key="frame" x="14" y="519" width="122" height="32"/>
                                 <buttonCell key="cell" type="push" title="Randomize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mkZ-OE-6K6">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="randomize:" target="3Cv-P6-i9m" id="L7z-Pj-9R5"/>
@@ -871,7 +874,6 @@
                         <outlet property="densityLabel" destination="8WU-dr-U3y" id="fed-KP-3aC"/>
                         <outlet property="densitySlider" destination="qjw-JE-bJf" id="0Xd-G2-NiQ"/>
                         <outlet property="newGameBut" destination="IW2-NG-3Fo" id="tOt-O8-nCM"/>
-                        <outlet property="randomNum" destination="8WU-dr-U3y" id="Lds-SP-2un"/>
                         <outlet property="rowsText" destination="LnW-Ip-3ua" id="sRl-la-SkG"/>
                         <outlet property="startBut" destination="lN0-xX-fPX" id="abI-XR-aw4"/>
                     </connections>

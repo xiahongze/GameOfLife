@@ -13,7 +13,7 @@ import os.log
 
 class GameController: NSViewController, NSWindowDelegate {
     @IBOutlet var skView: SKView!
-    var scene: GameScene? = nil
+    var scene: GameScene!
 
     func loadSkView() {
         if let view = self.skView {
@@ -31,14 +31,10 @@ class GameController: NSViewController, NSWindowDelegate {
         }
     }
 
-    func resetScene(cols: Int, rows: Int) {
-        scene?.initGrid(cols, cols)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("loaded GameController")
         loadSkView()
+        os_log("loaded GameController", type: .debug)
     }
 
     /**

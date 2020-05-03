@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import os.log
 
 let LIVE_COLOR = SKColor(cgColor: CGColor(red: 1, green: 1, blue: 1, alpha: 0.7))!
 let DEAD_COLOR = SKColor(cgColor: CGColor(red: 0, green: 0, blue: 0, alpha: 0.7))!
@@ -75,6 +76,16 @@ class GameScene: SKScene {
         }
     }
 
+    func step() -> Bool {
+        let diff = world.step()
+        os_log("about to flip %d points", type: .debug, diff.count)
+        diff.forEach { i, j in
+            world.flipState(i, j)
+            syncFromWorld(i, j)
+        }
+        return !diff.isEmpty
+    }
+
     func getGridPos(atPoint pos: CGPoint) -> (Int, Int) {
         let i = Int((pos.x + CGFloat(0.5) * size.width) / xunit)
         let j = Int((pos.y + CGFloat(0.5) * size.height) / yunit)
@@ -103,7 +114,6 @@ class GameScene: SKScene {
                                               SKAction.removeFromParent()]))
         }
     }
-
 
     func touchDown(atPoint pos: CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
