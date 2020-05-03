@@ -13,6 +13,7 @@ import os.log
 class GameSideController: NSViewController {
     @IBOutlet var densitySlider: NSSlider!
     @IBOutlet var densityLabel: NSTextField!
+    @IBOutlet var speedSlider: NSSlider!
     @IBOutlet var colsText: NSTextField!
     @IBOutlet var rowsText: NSTextField!
     private var frac: Float = 0.5
@@ -29,13 +30,14 @@ class GameSideController: NSViewController {
         (frac, densityLabel.stringValue) = (sender.floatValue, String(format: "%.2f", sender.floatValue))
     }
 
-    func setDelay(delay: UInt32) {
-        self.delay = delay
+    func setDelayWith(speed: Int) {
+        delay = UInt32(1000000 / speed)
     }
 
     override func viewDidLoad() {
         rowsText.integerValue = INIT_NROWS
         colsText.integerValue = INIT_NCOLS
+        setDelayWith(speed: speedSlider.integerValue)
     }
 
     @IBAction func randomize(_ sender: NSButton) {
@@ -63,5 +65,10 @@ class GameSideController: NSViewController {
             os_log("stopped at step %d", type: .debug, count)
             self.running = false
         }
+    }
+    
+    
+    @IBAction func setSpeed(_ sender: NSSlider) {
+        setDelayWith(speed: sender.integerValue)
     }
 }
