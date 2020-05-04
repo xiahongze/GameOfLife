@@ -21,11 +21,12 @@ class GameScene: SKScene {
     /**
      * private members that have to be initialized before use
      */
-    private var grid = [[SKShapeNode]]()
+    private var grid = [[SKShapeNode?]]()
     private var cols: Int!
     private var rows: Int!
     private var xunit: CGFloat!
     private var yunit: CGFloat!
+    private var snodeSize: CGSize!
     private var world: World!
 
     func randomize(_ frac: Float) {
@@ -36,16 +37,21 @@ class GameScene: SKScene {
     func syncFromWorld(_ i: Int, _ j: Int) {
         // Sync individual state
         if world.getState(i, j) {
-            grid[i][j].fillColor = LIVE_COLOR
+            if grid[i][j] == nil {
+                grid[i][j] = createNode(i, j)
+            }
         } else {
-            grid[i][j].fillColor = DEAD_COLOR
+            if let node = grid[i][j] {
+                removeChildren(in: [node])
+                grid[i][j] = nil
+            }
         }
     }
 
     func syncFromWorld() {
         // Sync the whole world
-        for i in 0..<rows! {
-            for j in 0..<cols! {
+        for i in 0..<rows {
+            for j in 0..<cols {
                 syncFromWorld(i, j)
             }
         }
@@ -54,25 +60,34 @@ class GameScene: SKScene {
     func setup(rows: Int, cols: Int) {
         (self.cols, self.rows) = (cols, rows)
         self.world = World(rows, cols)
-        grid.forEach(removeChildren)
+        var liveCells: [SKShapeNode] = []
+        for row in grid {
+            for n in row {
+                if n != nil {
+                    liveCells.append(n!)
+                }
+            }
+        }
+        removeChildren(in: liveCells)
         initGrid(rows, cols)
+    }
+    
+    func createNode(_ i: Int, _ j: Int) -> SKShapeNode {
+        let node = SKShapeNode(rectOf: snodeSize)
+        node.position = CGPoint(x: CGFloat(i) * xunit + CGFloat(0.5) * (xunit - size.width), y: CGFloat(j) * yunit + CGFloat(0.5) * (yunit - size.height))
+        addChild(node)
+        node.fillColor = LIVE_COLOR
+        node.strokeColor = SKColor.green
+        return node
     }
 
     func initGrid(_ rows: Int, _ cols: Int) {
         (xunit, yunit) = (size.width / CGFloat(rows), size.height / CGFloat(cols))
-        let snodeSize = CGSize(width: xunit, height: yunit)
+        snodeSize = CGSize(width: xunit, height: yunit)
         grid = []
-        
-        for i in 0..<rows {
+        for _ in 0..<rows {
             grid.append(
-                (0..<cols).map { j in
-                    let node = SKShapeNode(rectOf: snodeSize)
-                    node.position = CGPoint(x: CGFloat(i) * xunit + CGFloat(0.5) * (xunit - size.width), y: CGFloat(j) * yunit + CGFloat(0.5) * (yunit - size.height))
-                    addChild(node)
-                    node.fillColor = DEAD_COLOR
-                    node.strokeColor = SKColor.green
-                    return node
-                }
+                Array(repeating: nil, count: cols)
             )
         }
     }
