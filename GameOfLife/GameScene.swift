@@ -40,11 +40,9 @@ class GameScene: SKScene {
             if grid[i][j] == nil {
                 grid[i][j] = createNode(i, j)
             }
+            grid[i][j]?.fillColor = LIVE_COLOR
         } else {
-            if let node = grid[i][j] {
-                removeChildren(in: [node])
-                grid[i][j] = nil
-            }
+            grid[i][j]?.fillColor = DEAD_COLOR
         }
     }
 
