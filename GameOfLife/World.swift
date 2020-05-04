@@ -40,9 +40,9 @@ class World {
     ]
     private let rows: Int
     private let cols: Int
-    
+
     func getLiveCells() -> [(Int, Int)] {
-        return liveCells.map {$0.asTuple()}
+        return liveCells.map { $0.asTuple() }
     }
 
     func getState(_ i: Int, _ j: Int) -> Bool {
@@ -56,19 +56,14 @@ class World {
         // set a cell to alive
         cells[i][j] = state
     }
-    
-    func flipState(_ i: Int, _ j: Int) {
-        flipState(i, j, alterLiveCells: false)
-    }
 
-    func flipState(_ i: Int, _ j: Int, alterLiveCells: Bool) {
+
+    func flipState(_ i: Int, _ j: Int) {
         cells[i][j] = !cells[i][j]
-        if alterLiveCells {
-            if cells[i][j] {
-                liveCells.insert(Point(i, j))
-            } else {
-                liveCells.remove(Point(i, j))
-            }
+        if cells[i][j] {
+            liveCells.insert(Point(i, j))
+        } else {
+            liveCells.remove(Point(i, j))
         }
     }
 
@@ -124,9 +119,9 @@ class World {
     func stepNew() -> [(Int, Int)] {
         var diff = [(Int, Int)]()
         var visited = Set<Point>()
-        var nextLiveCells = Set<Point>()
-        while !liveCells.isEmpty {
-            let p = liveCells.popFirst()!
+        var stack = Array(liveCells)
+        while !stack.isEmpty {
+            let p = stack.popLast()!
             if !visited.contains(p) {
                 visited.insert(p)
             } else {
@@ -139,19 +134,14 @@ class World {
             if nextState != thisState {
                 diff.append(p.asTuple())
             }
-            
-            if nextState {
-                nextLiveCells.insert(p)
-            }
 
             if thisState {
                 let validNeighbours = neighbours.map { (x, y) in
                     (x + p.x, y + p.y)
-                }.filter(self.filterXY).map {Point($0, $1)}
-                validNeighbours.forEach {liveCells.insert($0)}
+                }.filter(self.filterXY).map { Point($0, $1) }
+                stack += validNeighbours
             }
         }
-        liveCells = nextLiveCells
         return diff
     }
 
