@@ -21,7 +21,7 @@ class GameScene: SKScene {
     /**
      * private members that have to be initialized before use
      */
-    private var grid = [[SKShapeNode?]]()
+    private var grid = [[SKShapeNode]]()
     private var cols: Int!
     private var rows: Int!
     private var xunit: CGFloat!
@@ -32,48 +32,43 @@ class GameScene: SKScene {
     func randomize(_ frac: Float) {
         world.randomize(frac)
         syncFromWorld()
+//        print("==============")
+//        printWorld()
     }
-
-    func syncFromWorld(_ i: Int, _ j: Int) {
-        // Sync individual state
-        if world.getState(i, j) {
-            if grid[i][j] == nil {
-                grid[i][j] = createNode(i, j)
-            }
-            grid[i][j]?.fillColor = LIVE_COLOR
+    
+    func flipState(_ i: Int, _ j: Int) {
+        let state = world.getState(i, j)
+        let node = grid[i][j]
+        if state {
+            removeChildren(in: [node])
         } else {
-            grid[i][j]?.fillColor = DEAD_COLOR
+            addChild(node)
         }
+        world.flipState(i, j)
     }
 
     func syncFromWorld() {
         // Sync the whole world
-        for i in 0..<rows {
-            for j in 0..<cols {
-                syncFromWorld(i, j)
-            }
+        removeAllChildren()
+        if let label = self.label {
+            addChild(label)
         }
+        (world.getLiveCells().map { grid[$0][$1] }) .forEach { addChild($0) }
     }
 
     func setup(rows: Int, cols: Int) {
         (self.cols, self.rows) = (cols, rows)
-        self.world = World(rows, cols)
-        var liveCells: [SKShapeNode] = []
-        for row in grid {
-            for n in row {
-                if n != nil {
-                    liveCells.append(n!)
-                }
-            }
+        if world != nil {
+            removeChildren(in: world.getLiveCells().map { grid[$0][$1] })
         }
-        removeChildren(in: liveCells)
+        self.world = World(rows, cols)
         initGrid(rows, cols)
     }
-    
+
     func createNode(_ i: Int, _ j: Int) -> SKShapeNode {
+        // create only, do not add to node or to grid
         let node = SKShapeNode(rectOf: snodeSize)
         node.position = CGPoint(x: CGFloat(i) * xunit + CGFloat(0.5) * (xunit - size.width), y: CGFloat(j) * yunit + CGFloat(0.5) * (yunit - size.height))
-        addChild(node)
         node.fillColor = LIVE_COLOR
         node.strokeColor = SKColor.green
         return node
@@ -83,18 +78,19 @@ class GameScene: SKScene {
         (xunit, yunit) = (size.width / CGFloat(rows), size.height / CGFloat(cols))
         snodeSize = CGSize(width: xunit, height: yunit)
         grid = []
-        for _ in 0..<rows {
+        for i in 0..<rows {
             grid.append(
-                Array(repeating: nil, count: cols)
+                (0..<cols).map { j in
+                    createNode(i, j)
+                }
             )
         }
     }
 
     func step() -> Bool {
-        let diff = world.step()
+        let diff = world.stepNew()
         diff.forEach { i, j in
-            world.flipState(i, j)
-            syncFromWorld(i, j)
+            flipState(i, j)
         }
         return !diff.isEmpty
     }
@@ -135,8 +131,7 @@ class GameScene: SKScene {
             self.addChild(n)
         }
         let (i, j) = getGridPos(atPoint: pos)
-        world.flipState(i, j)
-        syncFromWorld(i, j)
+        flipState(i, j)
     }
 
     func touchMoved(toPoint pos: CGPoint) {
@@ -181,5 +176,9 @@ class GameScene: SKScene {
 
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    }
+    
+    func printWorld() {
+        world.printWorld()
     }
 }

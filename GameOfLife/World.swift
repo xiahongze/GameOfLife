@@ -7,14 +7,43 @@
 //
 import Foundation
 
+struct Point: Hashable {
+    let x: Int
+    let y: Int
+
+    init(_ i: Int, _ j: Int) {
+        x = i
+        y = j
+    }
+
+    static func == (lhs: Point, rhs: Point) -> Bool {
+        return lhs.x == rhs.x && lhs.y == rhs.y
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(x)
+        hasher.combine(y)
+    }
+
+    func asTuple() -> (Int, Int) {
+        return (x, y)
+    }
+}
+
+
 class World {
     private var cells = [[Bool]]()
+    private var liveCells: Set<Point> = []
     private let neighbours = [
         (-1, 0), (0, -1), (1, 0), (0, 1),
         (1, 1), (-1, -1), (1, -1), (-1, 1)
     ]
     private let rows: Int
     private let cols: Int
+    
+    func getLiveCells() -> [(Int, Int)] {
+        return liveCells.map {$0.asTuple()}
+    }
 
     func getState(_ i: Int, _ j: Int) -> Bool {
         guard i < rows && j < cols else {
@@ -27,9 +56,20 @@ class World {
         // set a cell to alive
         cells[i][j] = state
     }
-
+    
     func flipState(_ i: Int, _ j: Int) {
+        flipState(i, j, alterLiveCells: false)
+    }
+
+    func flipState(_ i: Int, _ j: Int, alterLiveCells: Bool) {
         cells[i][j] = !cells[i][j]
+        if alterLiveCells {
+            if cells[i][j] {
+                liveCells.insert(Point(i, j))
+            } else {
+                liveCells.remove(Point(i, j))
+            }
+        }
     }
 
     func flipState(at positions: [(Int, Int)]) {
@@ -47,9 +87,16 @@ class World {
     }
 
     func randomize(_ frac: Float) {
+        liveCells = []
         cells.indices.forEach { i in
             (0..<cols).forEach { j in
-                cells[i][j] = Float.random(in: 0 ..< 1) < frac
+                let state = Float.random(in: 0 ..< 1) < frac
+                if state {
+                    cells[i][j] = true
+                    liveCells.insert(Point(i, j))
+                } else {
+                    cells[i][j] = false
+                }
             }
         }
     }
@@ -71,6 +118,40 @@ class World {
                 }
             }
         }
+        return diff
+    }
+
+    func stepNew() -> [(Int, Int)] {
+        var diff = [(Int, Int)]()
+        var visited = Set<Point>()
+        var nextLiveCells = Set<Point>()
+        while !liveCells.isEmpty {
+            let p = liveCells.popFirst()!
+            if !visited.contains(p) {
+                visited.insert(p)
+            } else {
+                // important
+                continue
+            }
+
+            let nextState = willLive(p.x, p.y)
+            let thisState = cells[p.x][p.y]
+            if nextState != thisState {
+                diff.append(p.asTuple())
+            }
+            
+            if nextState {
+                nextLiveCells.insert(p)
+            }
+
+            if thisState {
+                let validNeighbours = neighbours.map { (x, y) in
+                    (x + p.x, y + p.y)
+                }.filter(self.filterXY).map {Point($0, $1)}
+                validNeighbours.forEach {liveCells.insert($0)}
+            }
+        }
+        liveCells = nextLiveCells
         return diff
     }
 

@@ -64,6 +64,7 @@ class GameSideController: NSViewController {
             }
             os_log("stopped at step %d", type: .debug, count)
             self.running = false
+//            self.gameController.scene.printWorld()
         }
     }
     
