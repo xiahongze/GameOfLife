@@ -51,7 +51,7 @@ class GameSideController: NSViewController {
             return
         }
         running = true
-        let dispatchQueue = DispatchQueue(label: "runGame", qos: .background)
+        let dispatchQueue = DispatchQueue(label: "runGame", qos: .default)
         dispatchQueue.async {
             //Time consuming task here
             var count = 0

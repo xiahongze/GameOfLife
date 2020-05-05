@@ -46,6 +46,13 @@ class GameScene: SKScene {
         }
         world.flipState(i, j)
     }
+    
+    func flipState(_ diff: [(Int, Int)]) {
+        // flip all difference in one go
+        removeChildren(in: diff.filter {world.getState($0, $1)}.map {grid[$0][$1]} )
+        diff.filter {!world.getState($0, $1)}.forEach {addChild(grid[$0][$1])}
+        world.flipState(at: diff)
+    }
 
     func syncFromWorld() {
         // Sync the whole world
@@ -89,9 +96,7 @@ class GameScene: SKScene {
 
     func step() -> Bool {
         let diff = world.stepNew()
-        diff.forEach { i, j in
-            flipState(i, j)
-        }
+        flipState(diff)
         return !diff.isEmpty
     }
 

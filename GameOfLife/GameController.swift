@@ -28,6 +28,7 @@ class GameController: NSViewController, NSWindowDelegate {
             view.ignoresSiblingOrder = true
             view.showsFPS = true
             view.showsNodeCount = true
+            view.showsDrawCount = true
         }
     }
 
