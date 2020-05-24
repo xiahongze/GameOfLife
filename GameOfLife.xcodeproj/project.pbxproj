@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5210ED8247A202E007A05C5 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A87F752449C20800FF18B5 /* GameController.swift */; };
+		C5210ED9247A204F007A05C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A87F6D2449C20800FF18B5 /* AppDelegate.swift */; };
+		C5210EDA247A204F007A05C5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A87F732449C20800FF18B5 /* GameScene.swift */; };
 		C5A87F6E2449C20800FF18B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A87F6D2449C20800FF18B5 /* AppDelegate.swift */; };
 		C5A87F702449C20800FF18B5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C5A87F6F2449C20800FF18B5 /* GameScene.sks */; };
 		C5A87F722449C20800FF18B5 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = C5A87F712449C20800FF18B5 /* Actions.sks */; };
@@ -296,6 +299,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5210ED9247A204F007A05C5 /* AppDelegate.swift in Sources */,
+				C5210EDA247A204F007A05C5 /* GameScene.swift in Sources */,
+				C5210ED8247A202E007A05C5 /* GameController.swift in Sources */,
 				C5CD1D46245A7BEC00AA56A2 /* GameSideController.swift in Sources */,
 				C5A87F872449C20C00FF18B5 /* GameOfLifeTests.swift in Sources */,
 				C5CD1D4F245D3CD700AA56A2 /* World.swift in Sources */,
@@ -456,8 +462,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GameOfLife/GameOfLife.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DVGA3J7Y4;
 				INFOPLIST_FILE = GameOfLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -474,8 +482,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GameOfLife/GameOfLife.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DVGA3J7Y4;
 				INFOPLIST_FILE = GameOfLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -494,6 +504,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DVGA3J7Y4;
 				INFOPLIST_FILE = GameOfLifeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -515,6 +526,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DVGA3J7Y4;
 				INFOPLIST_FILE = GameOfLifeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -535,6 +547,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DVGA3J7Y4;
 				INFOPLIST_FILE = GameOfLifeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -554,6 +567,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DVGA3J7Y4;
 				INFOPLIST_FILE = GameOfLifeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
